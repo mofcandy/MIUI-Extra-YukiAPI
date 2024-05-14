@@ -26,7 +26,7 @@ jobs:
       run: |
         mkdir -p output
         rm -rf output/*
-        cp -r * output/
+        rsync -av --exclude='output' . output/
     - name: Commit and push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
