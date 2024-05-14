@@ -28,6 +28,8 @@ jobs:
         rm -r /tmp/output/
         cp -r . /tmp/output/
         mv /tmp/output ./output
+        pwd
+        ls -l
     - name: Commit and push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
