@@ -1,10 +1,8 @@
 name: Android CI
 
 on:
-  push:
-    branches: [ "yuki-api" ]
-  pull_request:
-    branches: [ "yuki-api" ]
+  workflow_dispatch:
+
 
 jobs:
   build:
@@ -19,8 +17,35 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
+        
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        pytest
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Prepare output directory
+      run: |
+        mkdir -p output
+        rm -rf output/*
+        cp -r * output/
+    - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add output/
+        git commit -m "Update output directory"
+        git push
