@@ -1,0 +1,30 @@
+<resources>
+    <string-array name="xposedscope">
+        <item>com.miui.powerkeeper</item>
+        <item>android</item>
+        <item>com.miui.home</item>
+        <item>com.xiaomi.misettings</item>
+        <item>com.android.systemui</item>
+        <item>com.miui.miwallpaper</item>
+    </string-array>
+    <string-array name="volume_animation_effect_entries">
+        <item>@string/shift</item>
+        <item>@string/stretch</item>
+        <item>@string/scale</item>
+    </string-array>
+    <string-array name="volume_animation_effect_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="miui_unlock_anim_enhance_entries">
+        <item>@string/defaults</item>
+        <item>Effect 1</item>
+        <item>Effect 2</item>
+    </string-array>
+    <string-array name="miui_unlock_anim_enhance_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
