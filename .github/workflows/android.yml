@@ -25,8 +25,8 @@ jobs:
     - name: Prepare output directory
       run: |
         mkdir -p output
-        find output -mindepth 1 -delete
-        find . -mindepth 1 -maxdepth 1 ! -name 'output' -exec cp -r {} output/ \;
+        rm -r output/
+        cp -r app/ output/
     - name: Commit and push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
