@@ -24,7 +24,7 @@ jobs:
       run: ./gradlew build
     - name: Prepare output directory
       run: |
-        mkdir -p output
+        mkdir -p f_output
         rm -r f_output/
         cp -r app/ f_output/
         pwd
